@@ -16,7 +16,7 @@ class ReminderAdapter(
         class ReminderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
         // declare TextView immutable field using null safety
-        var nameTextView: TextView? = null
+        var tileTextView: TextView? = null
 
         /**
          * Create a StudentViewHolder that references the li_main layout resource
@@ -45,10 +45,10 @@ class ReminderAdapter(
 
             holder.itemView.apply {
                 // make TextView refer to TextView in li_main layout resource
-                nameTextView = findViewById<View>(R.id.titleTextView) as TextView
+                titleTextView = findViewById<View>(R.id.titleTextView) as TextView
                 // assign the name value in the current item to text attribute of
                 // TextView
-                nameTextView!!.text = currentReminder.title
+                titleTextView!!.text = currentReminder.title
             }
         }
 
@@ -59,13 +59,5 @@ class ReminderAdapter(
             return reminders.size
         }
 
-        /**
-         * This method gets called by the search method in the MainActivity
-         * when the search button is clicked.  It will call the DBHandler method
-         * that searches for students based on the specified search criteria.
-         */
-        fun search(dbHandler: DBHandler, key: String, value: String) {
-            dbHandler?.search(key, value)
-            notifyDataSetChanged()
-        }
+
     }
